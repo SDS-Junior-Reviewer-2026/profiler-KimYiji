@@ -6,17 +6,23 @@ import java.util.Arrays;
 public class SelectionSort implements Sort {
     private int changeCnt = 0;
 
-    // selection sort 오름차순 예시코드
     public void selectionSort(ArrayList<Integer> arr) {
         changeCnt = 0;
-        for (int i = 0; i < arr.size(); i++) {
+
+        for (int i = 0; i < arr.size() - 1; i++) {
+            int minIdx = i;
+
             for (int j = i + 1; j < arr.size(); j++) {
-                if (arr.get(i) > arr.get(j)) {
-                    changeCnt++;
-                    int temp = arr.get(i);
-                    arr.set(i, arr.get(j));
-                    arr.set(j, temp);
+                if (arr.get(j) < arr.get(minIdx)) {
+                    minIdx = j;
                 }
+            }
+
+            if (minIdx != i) {
+                changeCnt++;
+                int temp = arr.get(i);
+                arr.set(i, arr.get(minIdx));
+                arr.set(minIdx, temp);
             }
         }
     }
@@ -35,7 +41,7 @@ public class SelectionSort implements Sort {
             System.out.print(", " + arr.get(i + 1));
         }
         System.out.println("]");
-        System.out.println("swap 횟수: " + changeCnt);
+        System.out.println("swap 횟수: " + getChangeCnt());
     }
 
 //    public static void main(String[] args) {
