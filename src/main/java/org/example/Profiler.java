@@ -7,7 +7,7 @@ public class Profiler {
     private static Sort SORT;
     // TODO : Profiler 구현
     static void setData(ArrayList<Integer> input) {
-        Profiler.INPUT = input;
+        Profiler.INPUT = new ArrayList<>(input);
     }
     static void setLib(Sort sort){
         Profiler.SORT = sort;
